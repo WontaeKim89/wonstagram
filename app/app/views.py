@@ -13,3 +13,4 @@ class Main(APIView):
     def get(self, request):
         return render(request, 'wonstagram/app/templates/app/main.html')
         #Django view에서 HTML 템플릿을 반환하려면 render 함수를 사용해야 한다.
+    # 수정해보자
