@@ -17,6 +17,18 @@ settings 파일에서 'TEMPLATES'의 'DIRS'에 templates 경로를 지정해놓�
 class Main(APIView):
     # permission_classes = [IsAuthenticated] -> [IsAuthenticated] : 권한정보
     def get(self, request):
-        print(os.getcwd())
         return render(request, 'app/main.html')
         #Django view에서 HTML 템플릿을 반환하려면 render 함수를 사용해야 한다.
+
+"""
+Django에서 'render()' 함수를 사용하면, 기본적으로 'settings.py'파일의 'TEMPLATES'설정을 참조한다.
+
+1) 'APP_DIRS' : 
+    첫번째, 'True'로 설정하면, 각 앱의 'templates'폴더를 찾아 템플릿 파일을 검색한다. 
+    이 경우, 각 앱의 디렉토리에 'templates'폴더를 만들어 템플릿 파일을 저장하고 이를 인식해 랜더링한다.
+    두번째, 'False'로 설정하면 root directory또는 중앙 집중식 디렉토리에 위치한 templates을 찾아 랜더링 한다.
+2) 'DIRS' : 프로젝트 전체에서 사용되는 템플릿 파일을 저장할 수 있는 추가적인 디렉토리를 지정한다. 이 경우 지정된 경로에 있는 템플릿 파일이 사용된다.
+
+즉, render() 함수를 호출할 떄, Django는 가장 먼저 'DIRS'에 지정된 경로를 검색하고, 그 다음 'APP_DIRS'를 통해 각 앱의 templates폴더를
+검색한다. 이 과정에서 템플릿 파일을 찾으면, 해당 파일을 사용해 랜더링한다.
+"""
